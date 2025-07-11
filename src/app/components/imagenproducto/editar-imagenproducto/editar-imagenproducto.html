@@ -1,0 +1,44 @@
+ <h2>{{ esEdicion ? 'Editar Imagen de Producto' : 'Crear Imagen de Producto' }}</h2>
+
+<form [formGroup]="formImagen" (ngSubmit)="guardar()" class="formulario-imagen">
+
+  <!-- URL de imagen -->
+  <mat-form-field appearance="fill">
+    <mat-label>URL de la imagen</mat-label>
+    <input matInput formControlName="urlImagen" placeholder="Pega una URL o carga abajo" />
+  </mat-form-field>
+
+  <!-- Vista previa -->
+  <div *ngIf="formImagen.value.urlImagen" class="imagen-preview">
+    <p>Vista previa:</p>
+    <img [src]="formImagen.value.urlImagen" alt="Vista previa" />
+  </div>
+
+  <!-- Carga de archivo -->
+  <div class="carga-imagen">
+    <input type="file" accept="image/*" (change)="cargarArchivo($event)" />
+    <small>Opcional: también podés pegar la imagen desde el portapapeles.</small>
+  </div>
+
+  <!-- Descripción -->
+  <mat-form-field appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="descripcion" />
+  </mat-form-field>
+
+  <!-- Producto existente (mat-select) -->
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccionar producto</mat-label>
+    <mat-select formControlName="idProducto">
+      <mat-option *ngFor="let prod of productos" [value]="prod.idProducto">
+        {{ prod.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Botones -->
+  <button mat-raised-button color="primary" type="submit">
+    {{ esEdicion ? 'Actualizar' : 'Crear' }}
+  </button>
+  <button mat-button routerLink="/ImagenProducto/listar">Cancelar</button>
+</form>

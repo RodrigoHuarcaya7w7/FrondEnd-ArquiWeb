@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Lista de Pedidos</h1>
+  <p>Total de pedidos: {{ pedidos.length }}</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrar por estado</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escribe para buscar..." />
+  </mat-form-field>
+
+<button mat-raised-button color="primary" routerLink="/pedidos/nuevo">
+  <mat-icon>add</mat-icon>
+  Agregar Pedido
+</button>
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="idPedido">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let pedido">{{ pedido.idPedido }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let pedido">{{ pedido.fecha | date: 'short' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let pedido">{{ pedido.estado }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>Monto</th>
+      <td mat-cell *matCellDef="let pedido">{{ pedido.monto | currency }}</td>
+    </ng-container>
+
+ 
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let pedido">
+        <a (click)="eliminarPedido(pedido.idPedido)" style="cursor: pointer;">
+          <mat-icon>delete</mat-icon> Eliminar
+        </a>
+        <button mat-icon-button color="primary"
+        [routerLink]="['/pedidos/editar', pedido.idPedido]">
+  <mat-icon>edit</mat-icon>
+</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="titulo-lista">
+    <h1>Lista de Productos</h1>
+    <p>Total de productos: {{ dataSource.data.length }}</p>
+  </div>
+
+  <div class="filtros">
+    <mat-form-field appearance="outline" class="filtro-input">
+      <mat-label>Filtrar por nombre o descripción</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Escribe para buscar..."
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" routerLink="/producto/edit">
+      <mat-icon>add</mat-icon>
+      Agregar Producto
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="idProducto">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.idProducto }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.nombre }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.descripcion }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.precio | currency }} </td>
+    </ng-container>
+
+    
+
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef> Stock </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.stock }} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef> color </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.color }} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="tamano">
+      <th mat-header-cell *matHeaderCellDef> tamano </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.stock }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="fechaRegistro">
+      <th mat-header-cell *matHeaderCellDef> fechaRegistro </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.fechaRegistro }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="precioDescuento">
+      <th mat-header-cell *matHeaderCellDef> precioDescuento </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.precioDescuento }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let producto"> {{ producto.estado }} </td>
+    </ng-container>
+
+<ng-container matColumnDef="cliente">
+  <th mat-header-cell *matHeaderCellDef> Cliente </th>
+  <td mat-cell *matCellDef="let producto">
+    {{ producto.cliente?.usuario?.username || 'No asignado' }}
+  </td>
+</ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef> categoria </th>
+      <td mat-cell *matCellDef="let producto">
+        {{ producto.categoria?.nombre || 'Sin categoría asignada' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idOfertaTipoProducto">
+      <th mat-header-cell *matHeaderCellDef> Tipo Oferta </th>
+      <td mat-cell *matCellDef="let producto">
+        {{ producto.tipoOferta?.nombre || 'Sin oferta asignada' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Opciones </th>
+      <td mat-cell *matCellDef="let producto">
+        <a style="cursor: pointer;" routerLink="/producto/edit/{{producto.idProducto}}">
+          <mat-icon>edit</mat-icon> Editar
+        </a>
+        <a style="cursor: pointer;" (click)="eliminarProducto(producto.idProducto)">
+          <mat-icon>delete</mat-icon> Eliminar
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

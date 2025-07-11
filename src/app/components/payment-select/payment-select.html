@@ -1,0 +1,36 @@
+ <!-- src/app/components/payment-select/payment-select.component.html -->
+<form [formGroup]="form" (ngSubmit)="siguiente()">
+
+  <mat-radio-group formControlName="metodoPago">
+    <mat-radio-button
+      *ngFor="let m of metodosConNombre"
+      [value]="m">
+      {{ m.nombrePago }}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <div *ngIf="form.value.metodoPago?.idTipoPago === 1" class="card-fields">
+    <mat-form-field appearance="outline">
+      <mat-label>Número de tarjeta</mat-label>
+      <input matInput formControlName="numero" maxlength="16" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de expiración</mat-label>
+      <input matInput formControlName="expiracion" placeholder="MM/AA" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>CVV</mat-label>
+      <input matInput formControlName="cvv" type="password" maxlength="4" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre del titular</mat-label>
+      <input matInput formControlName="nombreTitular" />
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">
+    Siguiente → Revisión
+  </button>
+
+</form>
+

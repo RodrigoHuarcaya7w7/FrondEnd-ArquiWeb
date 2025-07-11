@@ -1,0 +1,13 @@
+<!-- src/app/components/review/review.component.html -->
+<div>
+  <h2>Revisa tu compra</h2>
+  <img [src]="orderData.producto.imagenes?.[0]?.urlImagen" width="150" />
+  <p>Producto: {{ orderData.producto.nombre }}</p>
+  <p>Precio: {{ orderData.producto.precio | currency:'USD' }}</p>
+  <p>Dirección: {{ orderData.direccion }}</p>
+  <p>Método de pago: {{ orderData.metodoPago.descripcion }}</p>
+
+  <button mat-raised-button color="accent" (click)="confirmar()">
+    Confirmar compra
+  </button>
+</div>

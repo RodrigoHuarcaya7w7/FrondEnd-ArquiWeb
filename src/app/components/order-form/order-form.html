@@ -1,0 +1,21 @@
+<div *ngIf="producto">
+  <img 
+    [src]="producto.imagenes[0]?.urlImagen || 'assets/img/default.png'"
+    alt="{{ producto.nombre }}" width="200" />
+
+  <h2>{{ producto.nombre }}</h2>
+  <p>Precio: {{ producto.precio | currency:'USD' }}</p>
+  <p>{{ producto.descripcion }}</p>
+
+  <form [formGroup]="form" (ngSubmit)="siguiente()">
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección de envío</mat-label>
+      <input matInput formControlName="direccion" />
+    </mat-form-field>
+
+    <br />
+    <button mat-raised-button color="primary" type="submit">
+      Siguiente → Pago
+    </button>
+  </form>
+</div>

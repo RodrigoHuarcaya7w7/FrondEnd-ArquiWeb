@@ -1,0 +1,33 @@
+ <div class="form-container">
+  <h2 class="form-title">
+    {{ tipoOfertaId > 0 ? 'Editar Tipo de Oferta' : 'Registrar Nuevo Tipo de Oferta' }}
+  </h2>
+
+<form [formGroup]="addEditForm" (ngSubmit)="grabarTipoOferta()">
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="descripcion" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Importe</mat-label>
+    <input matInput type="number" formControlName="importe" required>
+  </mat-form-field>
+
+    <!-- Botones -->
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" type="submit" [disabled]="addEditForm.invalid">
+        {{ tipoOfertaId > 0 ? 'Actualizar' : 'Registrar' }}
+      </button>
+      <button mat-stroked-button color="warn" routerLink="/tipooferta/listar">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<h2 class="titulo-formulario">
+  {{ tipoPagoId > 0 ? 'Editar Tipo de Pago' : 'Registrar Tipo de Pago' }}
+</h2>
+
+<form [formGroup]="addEditForm" (ngSubmit)="grabarTipoPago()" class="formulario-pago">
+
+  <mat-form-field appearance="fill" class="campo">
+    <mat-label>Nombre del tipo de pago</mat-label>
+    <input matInput formControlName="nombrePago" placeholder="Ej. Efectivo, Tarjeta...">
+    <mat-error *ngIf="addEditForm.get('nombrePago')?.hasError('required')">
+      Este campo es obligatorio
+    </mat-error>
+    <mat-error *ngIf="addEditForm.get('nombrePago')?.hasError('minlength')">
+      Debe tener al menos 3 caracteres
+    </mat-error>
+  </mat-form-field>
+
+  <div class="acciones">
+    <button mat-flat-button color="primary" type="submit" [disabled]="addEditForm.invalid">
+      {{ tipoPagoId > 0 ? 'Actualizar' : 'Registrar' }}
+    </button>
+    <button mat-button color="warn" routerLink="/TipoPago/listar">
+      Cancelar
+    </button>
+  </div>
+</form>

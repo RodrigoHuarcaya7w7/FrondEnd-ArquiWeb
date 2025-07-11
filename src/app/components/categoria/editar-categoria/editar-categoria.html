@@ -1,0 +1,38 @@
+<div>
+  <h2 *ngIf="categoriaId == 0">Agregar una Categoría</h2>
+  <h2 *ngIf="categoriaId > 0">Editar una Categoría</h2>
+</div>
+
+<form [formGroup]="addEditForm">
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id" readonly="true">
+  </mat-form-field>
+  <br><br>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+    <div *ngIf="addEditForm.get('nombre')?.hasError('required') && addEditForm.get('nombre')?.touched">
+      <span style="color: red;">Este campo es requerido</span>
+    </div>
+    <div *ngIf="addEditForm.get('nombre')?.hasError('minlength') && addEditForm.get('nombre')?.touched">
+      <span style="color: red;">La longitud mínima no está completada</span>
+    </div>
+  </mat-form-field>
+  <br><br>
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="descripcion" />
+    <div *ngIf="addEditForm.get('descripcion')?.hasError('required') && addEditForm.get('descripcion')?.touched">
+      <span style="color: red;">Este campo es requerido</span>
+    </div>
+    <div *ngIf="addEditForm.get('descripcion')?.hasError('minlength') && addEditForm.get('descripcion')?.touched">
+      <span style="color: red;">La longitud mínima no está completada</span>
+    </div>
+  </mat-form-field>
+  <br><br>
+
+  <button mat-raised-button routerLink="/categoria/listar">Cancelar</button>
+  <span> - </span>
+  <button mat-flat-button (click)="GrabarCategoria()" color="primary">Grabar</button>
+</form>

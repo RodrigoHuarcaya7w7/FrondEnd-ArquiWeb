@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <h1 class="titulo"><b>StyleCycle v1.0</b></h1>
+      <span class="example-spacer"></span>
+    <span *ngIf="HayUsuarioLogeado()" class="usuario">Hola {{ username }}</span>
+
+      <a style="cursor: pointer;" *ngIf="HayUsuarioLogeado()" routerLink="/home"><mat-icon>home</mat-icon> </a>   
+      <a style="cursor: pointer;" *ngIf="HayUsuarioLogeado()" (click)="Logout()"><mat-icon>logout</mat-icon> </a>   
+      
+    
+</mat-toolbar>

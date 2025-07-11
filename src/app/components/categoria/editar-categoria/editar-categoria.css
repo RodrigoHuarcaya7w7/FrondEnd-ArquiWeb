@@ -1,0 +1,22 @@
+.titulo-formulario {
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.formulario-imagen {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-formulario {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.acciones-formulario {
+  display: flex;
+  justify-content: space-between;
+}

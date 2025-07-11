@@ -1,0 +1,11 @@
+ .boton-cerrar {
+  margin-top: 15px;
+  align-self: center;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.boton-cerrar mat-icon {
+  margin-right: 8px;
+}

@@ -1,0 +1,17 @@
+.formulario-imagen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.imagen-preview img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.carga-imagen input[type="file"] {
+  margin-top: 8px;
+}

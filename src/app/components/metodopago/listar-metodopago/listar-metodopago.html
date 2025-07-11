@@ -1,0 +1,50 @@
+ <div class="container">
+  <h1>Lista de Métodos de Pago</h1>
+  <p>Total de métodos de pago: {{ metodosPago.length }}</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrar por descripción</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escribe para buscar..." />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" routerLink="/MetodoPago/edit" style="margin-bottom: 20px;">
+    Agregar Método de Pago
+  </button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="idMetodoPago">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let metodoPago">{{ metodoPago.idMetodoPago }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripción</th>
+      <td mat-cell *matCellDef="let metodoPago">{{ metodoPago.descripcion }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoPago">
+      <th mat-header-cell *matHeaderCellDef>Tipo de Pago</th>
+      <td mat-cell *matCellDef="let metodoPago">{{ metodoPago.tipoPago?.nombrePago }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let metodoPago">
+        <!-- Botón de Editar -->
+        <a [routerLink]="['/MetodoPago/edit', metodoPago.idMetodoPago]" style="cursor: pointer;">
+          <mat-icon>edit</mat-icon> Editar
+        </a>
+
+        <!-- Botón de Eliminar -->
+        <a (click)="eliminarMetodoPago(metodoPago.idMetodoPago)" style="cursor: pointer;">
+          <mat-icon>delete</mat-icon> Eliminar
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,99 @@
+ /* Contenedor general */
+.dashboard {
+  padding: 2rem;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Título de sección */
+.dashboard__title {
+  text-align: center;
+  color: #34495e;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Grid flexible de tarjetas */
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Enlace envolvente para toda la tarjeta */
+.dashboard__card {
+  width: 100%;
+  text-decoration: none;
+}
+
+/* Estilo de mat-card */
+.dashboard__card mat-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+/* Efecto hover */
+.dashboard__card mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Imagen de la tarjeta */
+.card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ecf0f1;
+  padding: 1rem 0;
+}
+
+.card__image img {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* Encabezado de la tarjeta */
+.dashboard__card mat-card-header {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.dashboard__card mat-card-title {
+  font-size: 1.3rem;
+  color: #2c3e50;
+}
+
+.dashboard__card mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Contenido de la tarjeta */
+.dashboard__card mat-card-content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.dashboard__card mat-card-content p {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .dashboard__title {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,181 @@
+ <section class="dashboard">
+  <h1 class="dashboard__title">Opciones del sistema-Admin</h1>
+
+  <div class="dashboard__grid">
+    <!-- Producto -->
+    <a routerLink="/producto/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Producto</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/Producto.png" alt="Producto" />
+        </div>
+        <mat-card-content>
+          <p>Administra los productos disponibles en la tienda</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Categoría -->
+    <a routerLink="/categoria/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Categoría</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/Categoria.png" alt="Categoría" />
+        </div>
+        <mat-card-content>
+          <p>Gestiona las categorías de productos</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Usuarios -->
+    <a routerLink="/user/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Usuarios</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/Usuario.png" alt="Usuarios" />
+        </div>
+        <mat-card-content>
+          <p>Administra cuentas de administrador y usuarios</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Pedidos -->
+    <a routerLink="/pedido/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Pedido</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/Pedido.png" alt="Pedido" />
+        </div>
+        <mat-card-content>
+          <p>Revisa y administra los pedidos realizados</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Tipo de Pago -->
+    <a routerLink="/TipoPago/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Tipo de Pago</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/TipoPago.png" alt="Tipo de Pago" />
+        </div>
+        <mat-card-content>
+          <p>Gestiona los tipos de pago disponibles</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Método de Pago -->
+    <a routerLink="/MetodoPago/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Método de Pago</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/MetododePago.png" alt="Método de Pago" />
+        </div>
+        <mat-card-content>
+          <p>Administra los métodos de pago por tipo</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Detalle de Pedido -->
+    <a routerLink="/DetallePedido/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Detalle Pedido</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/DetallePedido.png" alt="Detalle Pedido" />
+        </div>
+        <mat-card-content>
+          <p>Visualiza las líneas de cada pedido</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Tipo de Oferta -->
+    <a routerLink="/TipoOferta/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Tipo de Oferta</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/TipoOferta.png" alt="Tipo de Oferta" />
+        </div>
+        <mat-card-content>
+          <p>Maneja las promociones aplicables</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Oferta por Producto -->
+    <a routerLink="/OfertaTipoProducto/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Oferta por Producto</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/OfertaporProduct.png" alt="Oferta por Producto" />
+        </div>
+        <mat-card-content>
+          <p>Configura descuentos por producto</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Imagen Cliente -->
+    <a routerLink="/imagenCliente/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Imagen Cliente</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/ImagenCliente.png" alt="Imagen Cliente" />
+        </div>
+        <mat-card-content>
+          <p>Sube y edita fotos de perfil del cliente</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+
+    <!-- Imagen Producto -->
+    <a routerLink="/ImagenProducto/listar" class="dashboard__card">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Imagen Producto</mat-card-title>
+          <mat-card-subtitle>CRUD</mat-card-subtitle>
+        </mat-card-header>
+        <div class="card__image">
+          <img mat-card-image src="icons/ImagenProducto.png" alt="Imagen Producto" />
+        </div>
+        <mat-card-content>
+          <p>Gestiona imágenes de cada producto</p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+  </div>
+</section>

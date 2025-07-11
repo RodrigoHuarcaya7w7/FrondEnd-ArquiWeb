@@ -1,0 +1,95 @@
+<div class="container">
+  <h1>Lista de Ofertas Tipo Producto</h1>
+  <p>
+    Total de ofertas tipo producto:
+    {{ xxdsListaOfertatipoproducto.data.length }}
+  </p>
+
+  <!-- Filtro de búsqueda -->
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrar por producto o tipo oferta</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Escribe para buscar..."
+    />
+  </mat-form-field>
+
+  <!-- Botón Agregar -->
+   <router-outlet>
+  <span> - </span>
+  <button mat-raised-button routerLink="/OfertaTipoProducto/edit">
+    Agregar
+  </button>
+</router-outlet>
+  <!-- Tabla de ofertas tipo producto -->
+  <table
+    mat-table
+    [dataSource]="xxdsListaOfertatipoproducto"
+   
+  >
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let ofertaTipoProducto">
+        {{ ofertaTipoProducto.id }}
+      </td>
+    </ng-container>
+
+    <!-- Fecha de Aplicación -->
+    <ng-container matColumnDef="fechaAplicacion">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Aplicación</th>
+      <td mat-cell *matCellDef="let ofertaTipoProducto">
+        {{ ofertaTipoProducto.fechaAplicacion | date }}
+      </td>
+    </ng-container>
+
+    <!-- Producto -->
+    <ng-container matColumnDef="producto">
+      <th mat-header-cell *matHeaderCellDef>Producto</th>
+      <td mat-cell *matCellDef="let ofertaTipoProducto">
+        {{ ofertaTipoProducto.producto?.nombre || "No asignado" }}
+      </td>
+    </ng-container>
+
+    <!-- Tipo de Oferta -->
+    <ng-container matColumnDef="tipoOferta">
+      <th mat-header-cell *matHeaderCellDef>Tipo de Oferta</th>
+      <td mat-cell *matCellDef="let ofertaTipoProducto">
+        {{ ofertaTipoProducto.tipoOferta?.nombre || "No asignado" }}
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let ofertaTipoProducto">
+        <!-- Eliminar OfertaTipoProducto -->
+        <a
+          (click)="xxBorrarOfertatipoproducto(ofertaTipoProducto.id)"
+          style="cursor: pointer"
+        >
+          <mat-icon>delete</mat-icon> Eliminar
+        </a>
+        <!-- Editar OfertaTipoProducto -->
+        <a
+          style="cursor: pointer"
+          [routerLink]="['/OfertaTipoProducto/edit', ofertaTipoProducto.id]"
+        >
+          <mat-icon>edit</mat-icon> Editar
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Filas de la tabla -->
+    <tr mat-header-row *matHeaderRowDef="xxdisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: xxdisplayedColumns"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <mat-paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

@@ -1,0 +1,98 @@
+ <div class="container">
+  <h2 *ngIf="productoId == 0" class="titulo-formulario">Agregar Producto</h2>
+  <h2 *ngIf="productoId > 0" class="titulo-formulario">Editar Producto</h2>
+
+  <form [formGroup]="addEditForm" (ngSubmit)="GrabarProducto()" class="form-container">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput id="nombre" formControlName="nombre" required>
+      <mat-error *ngIf="addEditForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Descripción -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <input matInput id="descripcion" formControlName="descripcion" required>
+      <mat-error *ngIf="addEditForm.get('descripcion')?.hasError('required')">La descripción es obligatoria.</mat-error>
+    </mat-form-field>
+
+    <!-- Precio -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Precio</mat-label>
+      <input matInput id="precio" formControlName="precio" type="number" required>
+      <mat-error *ngIf="addEditForm.get('precio')?.hasError('required')">El precio es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Precio Descuento -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Precio Descuento</mat-label>
+      <input matInput id="precioDescuento" formControlName="precioDescuento" type="number">
+    </mat-form-field>
+
+    <!-- Stock -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Stock</mat-label>
+      <input matInput id="stock" formControlName="stock" type="number" required>
+      <mat-error *ngIf="addEditForm.get('stock')?.hasError('required')">El stock es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Tamaño -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tamaño</mat-label>
+      <input matInput id="tamano" formControlName="tamano" required>
+      <mat-error *ngIf="addEditForm.get('tamano')?.hasError('required')">El tamaño es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Color -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Color</mat-label>
+      <input matInput id="color" formControlName="color" required>
+      <mat-error *ngIf="addEditForm.get('color')?.hasError('required')">El color es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de Registro -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha de Registro</mat-label>
+      <input matInput id="fechaRegistro" formControlName="fechaRegistro" [matDatepicker]="picker" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="addEditForm.get('fechaRegistro')?.hasError('required')">La fecha de registro es obligatoria.</mat-error>
+    </mat-form-field>
+
+    <!-- Estado -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado</mat-label>
+      <input matInput id="estado" formControlName="estado" required>
+      <mat-error *ngIf="addEditForm.get('estado')?.hasError('required')">El estado es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Select para Categoría -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Categoría</mat-label>
+      <select matNativeControl id="idCategoria" formControlName="idCategoria" required>
+        <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
+      </select>
+    </mat-form-field>
+
+    <!-- Select para Tipo de Oferta -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo de Oferta</mat-label>
+      <select matNativeControl id="idTipoOferta" formControlName="idTipoOferta" required>
+        <option *ngFor="let tipoOferta of tipoOfertas" [value]="tipoOferta.idTipoOferta">{{tipoOferta.nombre}}</option>
+      </select>
+    </mat-form-field>
+
+   <!-- Botón de guardar -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="addEditForm.invalid">
+      Guardar Producto
+    </button>
+
+    <!-- Botón Cerrar -->
+    <button mat-raised-button color="warn" routerLink="/producto/listar" class="boton-cerrar">
+      <mat-icon>close</mat-icon>
+      Cerrar
+    </button>
+  </form>
+</div>

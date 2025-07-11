@@ -1,0 +1,50 @@
+<h2 class="titulo-formulario">
+  {{ imagenId > 0 ? 'Editar Imagen de Cliente' : 'Registrar Imagen de Cliente' }}
+</h2>
+
+<form [formGroup]="addEditForm" (ngSubmit)="GrabarImagen()" class="formulario-imagen" novalidate>
+
+  <mat-form-field appearance="fill" class="campo-formulario">
+    <mat-label>Nombre del Archivo</mat-label>
+    <input matInput formControlName="nombreArchivo" />
+    <mat-error *ngIf="addEditForm.get('nombreArchivo')?.hasError('required')">
+      Este campo es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  
+  <div
+  class="zona-drop"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+  [class.activo]="dropActivo"
+>
+  <p *ngIf="!previewUrl">Arrastra una imagen aquí o haz clic</p>
+<img *ngIf="previewUrl" [src]="previewUrl" width="150" alt="Previsualización" />
+<input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/*" />
+
+</div>
+<button mat-button (click)="fileInput.click()">Seleccionar archivo</button>
+
+  
+
+  <mat-form-field appearance="fill" class="campo-formulario">
+    <mat-label>Cliente</mat-label>
+    <mat-select formControlName="cliente">
+      <mat-option *ngFor="let c of clientes" [value]="c.idCliente">
+        {{ c.nombre }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="addEditForm.get('cliente')?.hasError('required')">
+      Debe seleccionar un cliente
+    </mat-error>
+  </mat-form-field>
+
+  <div class="acciones-formulario">
+    <button mat-flat-button color="primary" type="submit" [disabled]="addEditForm.invalid">
+      {{ imagenId > 0 ? 'Actualizar' : 'Registrar' }}
+    </button>
+    <button mat-flat-button color="warn" routerLink="/imagenCliente/listar">Cancelar</button>
+  </div>
+</form>

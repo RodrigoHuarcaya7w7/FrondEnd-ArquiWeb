@@ -1,0 +1,37 @@
+<form [formGroup]="loginForm">
+  <h2>Bienvenido usuario!</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Usuario</mat-label>
+    <input
+      matInput
+      formControlName="username"
+      autocomplete="username" />
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      [type]="ocultarPassword ? 'password' : 'text'"
+      autocomplete="current-password" />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="ocultarPassword = !ocultarPassword"
+      type="button">
+      <mat-icon>
+        {{ ocultarPassword ? 'visibility_off' : 'visibility' }}
+      </mat-icon>
+    </button>
+  </mat-form-field>
+
+  <br><br>
+
+  <button mat-raised-button routerLink="/">Cancelar</button>
+  <span> - </span>
+  <button mat-flat-button (click)="Login()" color="primary">Login</button>
+</form>

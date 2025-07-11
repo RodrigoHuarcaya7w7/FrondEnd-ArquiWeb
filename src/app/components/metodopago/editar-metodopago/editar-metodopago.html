@@ -1,0 +1,35 @@
+ <div class="container">
+  <h2 *ngIf="metodoPagoId == 0">Agregar un Método de Pago</h2>
+  <h2 *ngIf="metodoPagoId > 0">Editar un Método de Pago</h2>
+
+  <form [formGroup]="addEditForm" (ngSubmit)="grabarMetodoPago()">
+
+    <!-- Descripción -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="descripcion" required />
+      <mat-error *ngIf="addEditForm.get('descripcion')?.hasError('required')">La descripción es requerida</mat-error>
+    </mat-form-field>
+
+    <!-- Tipo de Pago -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo de Pago</mat-label>
+      <mat-select formControlName="idTipoPago" required>
+        <mat-option *ngFor="let tipo of tiposPago" [value]="tipo.idTipoPago">
+          {{ tipo.nombrePago }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="addEditForm.get('idTipoPago')?.hasError('required')">El tipo de pago es requerido</mat-error>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" type="submit">
+        {{ metodoPagoId > 0 ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button mat-button routerLink="producto/listar" color="warn">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+
